@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
       {
          Vector3 spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
          Enemy spawnedEnemy = Instantiate(_prefab, spawnPoint, Quaternion.identity);
-         spawnedEnemy.transform.forward = _direction;
+         spawnedEnemy.SetDirection(_direction);
 
          yield return _delay;
       }
