@@ -1,13 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
    [SerializeField] private Enemy _prefab;
-   [SerializeField] private List<Vector3> _spawnPoints;
-   [SerializeField] private Vector3 _direction;
+   [SerializeField] private Transform _target;
    [SerializeField] private float _spawnDelay;
 
    private WaitForSeconds _delay;
@@ -22,9 +19,8 @@ public class Spawner : MonoBehaviour
    {
       while (enabled)
       {
-         Vector3 spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-         Enemy spawnedEnemy = Instantiate(_prefab, spawnPoint, Quaternion.identity);
-         spawnedEnemy.SetDirection(_direction);
+         Enemy spawnedEnemy = Instantiate(_prefab, transform.position, Quaternion.identity);
+         spawnedEnemy.SetTarget(_target);
 
          yield return _delay;
       }
