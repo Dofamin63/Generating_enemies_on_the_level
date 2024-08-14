@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyTarget : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _speed;
     [SerializeField] private Transform[] _wayPoints;
     private int _currentWayPoint;
 
